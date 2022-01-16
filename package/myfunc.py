@@ -220,7 +220,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
         lookup='hpname',
         from_=alt.LookupData(data=hp, key='hpname', fields=['bed'])
     ).mark_bar().encode(
-        x=alt.X('sum(value)', title=None),
+        x=alt.X('sum(value)', title='件数'),
         y=alt.Y('hpname', sort='-x', title=None,
                 axis=alt.Axis(labelColor=label_color)),
         color=mdc_color,
@@ -228,7 +228,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ).properties(
         width=top_width,
         height=top_hight,
-        title='病院別診療実績'
+        title='病院別実績'
     ).add_selection(
         mdc_selection
     ).transform_filter(
@@ -260,8 +260,8 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
         sum_value='sum(value)',
         groupby=['hpname', 'bed', 'mdcname', 'hp']
     ).mark_point().encode(
-        x=alt.X('sum_value:Q'),
-        y=alt.Y('bed:Q', scale=alt.Scale(zero=False)),
+        x=alt.X('sum_value:Q', title='件数'),
+        y=alt.Y('bed:Q', title='病床数', scale=alt.Scale(zero=False)),
         color=mdc_color,
         shape=alt.Shape('hp', title=None),
         # size=alt.Size('sum_value:Q'),
@@ -269,7 +269,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ).properties(
         width=top_width,
         height=top_hight,
-        title='病床数別 MDC別実績'
+        title='病床数実績'
     ).add_selection(
         mdc_selection
     )
