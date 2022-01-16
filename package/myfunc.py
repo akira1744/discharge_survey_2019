@@ -7,7 +7,7 @@ import toolz
 
 
 def t(data): return toolz.curried.pipe(
-    data, limit_rows(max_rows=60000000), to_values)
+    data, limit_rows(max_rows=200000), to_values)
 
 
 alt.data_transformers.register('custom', t)

@@ -6,7 +6,7 @@ from package import myfunc
 
 
 def t(data): return toolz.curried.pipe(
-    data, limit_rows(max_rows=60000000), to_values)  # TODO データ最適化後、最大行数のミニマム化
+    data, limit_rows(max_rows=200000), to_values)
 
 
 st.set_page_config(layout="wide")
@@ -32,6 +32,7 @@ charts = myfunc.draw_chart(
     select_hpname,  mdc2d, mdc6d, oped, hp)
 
 st.altair_chart(charts)
+st.sidebar.write(len(oped))
 
 
 # フッター　###################################################################################
