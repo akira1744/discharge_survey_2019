@@ -173,9 +173,9 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
 def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ##################################################################
     top_hight = 270
-    top_width = 390
+    top_width = 340
     second_hight = 270
-    second_width = 150
+    second_width = 115
     color_scheme = 'category20b'
     #########################################################
     # 医療機関名が選択されたらその病院を赤くする。
