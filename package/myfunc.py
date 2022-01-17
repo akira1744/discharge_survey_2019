@@ -172,10 +172,10 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
 @st.experimental_memo()
 def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ##################################################################
-    top_hight = 270
-    top_width = 340
-    second_hight = 270
-    second_width = 115
+    top_hight = 370
+    top_width = 480
+    second_hight = 370
+    second_width = 210
     color_scheme = 'category20b'
     #########################################################
     # 医療機関名が選択されたらその病院を赤くする。
