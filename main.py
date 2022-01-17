@@ -32,8 +32,6 @@ charts = myfunc.draw_chart(
     select_hpname,  mdc2d, mdc6d, oped, hp)
 
 st.altair_chart(charts)
-st.sidebar.write(len(oped))
-
 
 # フッター　###################################################################################
 link1 = 'https://www.mhlw.go.jp/stf/shingi2/0000196043_00004.html'

@@ -72,13 +72,13 @@ def load_data():
     mdc6d = mdc6d.merge(mdc2_mst, on='mdc2')
     mdc6d = mdc6d.loc[:, ['hpname', 'mdcname', 'mdc6name', 'value']]
 
-    oped = oped.merge(hp[['hpcd', 'hpname']], on='hpcd')
+    oped = oped.merge(hp[['hpcd', 'hpname','bed']], on='hpcd')
     oped = oped.merge(mdc26_mst, on='mdc6')
     oped = oped.merge(mdc2_mst, on='mdc2')
     oped = oped.merge(ope_mst, on=['mdc6', 'ope'])
     oped['hp'] = ' '  # selecthpのshape分けに使用
     oped = oped.loc[:, ['hpname', 'mdcname',
-                        'mdc6name', 'opename', 'value', 'hp']]
+                        'mdc6name', 'opename', 'value', 'bed','hp']]
 
     return hp, hp_list, pref_list, mdc2d, mdc6d, oped
 
@@ -127,7 +127,6 @@ def set_location(select_hpname, hp, pref_list):
                 select_hpname)]['med2'].unique()
         else:
             init_med2 = []
-            # init_city = []
     #############################################################
     try:
         if len(select_prefs) == 1:
@@ -216,10 +215,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
                               alt.value('lightgray')
                               )
     ######################################################################
-    hp_bars = alt.Chart(oped).transform_lookup(
-        lookup='hpname',
-        from_=alt.LookupData(data=hp, key='hpname', fields=['bed'])
-    ).mark_bar().encode(
+    hp_bars = alt.Chart(oped).mark_bar().encode(
         x=alt.X('sum(value)', title='件数'),
         y=alt.Y('hpname', sort='-x', title=None,
                 axis=alt.Axis(labelColor=label_color)),
@@ -247,10 +243,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
         (alt.datum.hp_rank < 20) & (alt.datum.value > 0)
     )
     ###################################################################
-    hp_point = alt.Chart(oped).transform_lookup(
-        lookup='hpname',
-        from_=alt.LookupData(data=hp, key='hpname', fields=['bed'])
-    ).transform_filter(
+    hp_point = alt.Chart(oped).transform_filter(
         mdc_selection
     ).transform_filter(
         mdc6_selection
