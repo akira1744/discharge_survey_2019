@@ -26,10 +26,10 @@ select_prefs, select_med2s, select_citys, hp = myfunc.set_location(
 set_min, set_max = st.sidebar.slider("病床数", value=(0, 1400), step=50)
 
 mdc2d, mdc6d, oped, hp = myfunc.filtering_data(
-    hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max,select_prefs,select_med2s,select_citys)
+    hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max,select_prefs, select_med2s, select_citys)
 
 charts = myfunc.draw_chart(
-    select_hpname,  mdc2d, mdc6d, oped, hp,select_prefs,select_med2s,select_citys)
+    select_hpname,  mdc2d, mdc6d, oped, hp,select_prefs, select_med2s, select_citys)
 
 st.altair_chart(charts)
 
