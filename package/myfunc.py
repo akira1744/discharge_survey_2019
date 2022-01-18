@@ -169,7 +169,7 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max,selec
 
 
 @st.experimental_memo()
-def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
+def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp,select_prefs,select_med2s,select_citys):
     ##################################################################
     top_hight = 370
     top_width = 490
