@@ -260,18 +260,18 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
         mdc_selection
     )
     ###################################################################
-    hp_point = oped_base2.transform_aggregate(
-        sum_value='sum(value)',
-        groupby=['hpname', 'bed', 'mdcname', 'hp']
-    ).mark_point().encode(
-        x=alt.X('sum_value:Q', title='件数'),
+    # hp_point = oped_base2.transform_aggregate(
+    #     sum_value='sum(value)',
+    #     groupby=['hpname', 'bed', 'mdcname', 'hp']
+    hp_point = oped_base2.mark_point().encode(
+        x=alt.X('sum(value):Q', title='件数'),
         y=alt.Y('bed:Q', title='病床数', scale=alt.Scale(zero=False)),
         color=mdc_color,
         shape=alt.Shape('hp', title='shape'),
-        size=alt.Size('sum_value:Q',title='size'),
+        size=alt.Size('sum(value):Q',title='size'),
         tooltip=[alt.Tooltip('hpname',title='病院名'),
                  alt.Tooltip('bed:Q',title='病床数',format=","),
-                 alt.Tooltip('sum_value:Q',title='件数',format=",")]
+                 alt.Tooltip('sum(value):Q',title='件数',format=",")]
     ).properties(
         width=top_width,
         height=top_hight,
