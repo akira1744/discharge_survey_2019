@@ -154,7 +154,7 @@ def set_location(select_hpname, hp, pref_list):
 
 
 @st.experimental_memo()
-def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max,select_prefs, select_med2s, select_citys):
+def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
     hp = hp.loc[hp['bed'].between(set_min, set_max)]
     f = set(hp['hpname'])
     f = f.union(select_hpname)
@@ -169,7 +169,7 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max,selec
 
 
 @st.experimental_memo()
-def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp,select_prefs, select_med2s, select_citys):
+def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ##################################################################
     top_hight = 370
     top_width = 490
