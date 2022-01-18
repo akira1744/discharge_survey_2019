@@ -481,7 +481,7 @@ def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
                 height=second_hight
             )
             hp_ope_text = hp_ope_base.encode(
-                x=alt.X('sum(value):Q', title=None, scale={'domain': [0, mdc6_max]}),
+                x=alt.X('sum(value):Q', title=None, scale={'domain': [0, ope_max]}),
                 y=alt.Y('opename', sort='-x', title=None),
                 text=alt.Text('sum(value):Q',format=',')
             )
