@@ -6,7 +6,7 @@ from package import myfunc
 
 
 def t(data): return toolz.curried.pipe(
-    data, limit_rows(max_rows=200000), to_values)
+    data, limit_rows(max_rows=300000), to_values)
 
 
 st.set_page_config(layout="wide")
@@ -25,8 +25,7 @@ select_prefs, select_med2s, select_citys, hp = myfunc.set_location(
 
 set_min, set_max = st.sidebar.slider("病床数", value=(0, 1400), step=50)
 
-mdc2d, mdc6d, oped, hp = myfunc.filtering_data(
-    hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max)
+mdc2d, mdc6d, oped, hp = myfunc.filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max)
 
 charts = myfunc.draw_chart(
     select_hpname,  mdc2d, mdc6d, oped, hp)

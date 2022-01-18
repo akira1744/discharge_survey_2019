@@ -7,7 +7,7 @@ import toolz
 
 
 def t(data): return toolz.curried.pipe(
-    data, limit_rows(max_rows=200000), to_values)
+    data, limit_rows(max_rows=300000), to_values)
 
 
 alt.data_transformers.register('custom', t)
@@ -163,8 +163,7 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
     oped = oped.loc[(oped['hpname'].isin(f))]
     # 散布図のshape用の処理
     if select_hpname != []:
-        oped['hp'] = oped['hp'].mask(
-            oped['hpname'].isin(select_hpname), oped['hpname'])
+        oped['hp'] = oped['hp'].mask(oped['hpname'].isin(select_hpname), oped['hpname'])
     return mdc2d, mdc6d, oped, hp
 
 
