@@ -16,7 +16,9 @@ alt.data_transformers.enable('custom')
 
 hp, hp_list, pref_list, mdc2d, mdc6d, oped = myfunc.load_data()
 
-st.sidebar.markdown("### 病院・疾患・手術別　患者数分析")
+
+st.sidebar.markdown("## 診療実績分析(2019年度)")
+st.sidebar.markdown("### ")
 
 select_hpname = st.sidebar.multiselect('医療機関名', hp_list)
 
