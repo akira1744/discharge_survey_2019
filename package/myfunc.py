@@ -14,7 +14,7 @@ alt.data_transformers.register('custom', t)
 alt.data_transformers.enable('custom')
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10)
 def load_data():
     hp = pd.read_csv('data/hp_mst.csv', encoding='cp932',
                      dtype={'hpcd': int,
@@ -83,19 +83,19 @@ def load_data():
     return hp, hp_list, pref_list, mdc2d, mdc6d, oped
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10, ttl=3600)
 def pref(hp, select_prefs):
     hp = hp.loc[hp['pref'].isin(select_prefs)]
     return hp
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10, ttl=3600)
 def med2(hp, select_med2s):
     hp = hp.loc[hp['med2'].isin(select_med2s)]
     return hp
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10, ttl=3600)
 def city(hp, select_citys):
     hp = hp.loc[hp['city'].isin(select_citys)]
     return hp
@@ -153,7 +153,7 @@ def set_location(select_hpname, hp, pref_list):
     return select_prefs, select_med2s, select_citys, hp
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10, ttl=3600)
 def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
     hp = hp.loc[hp['bed'].between(set_min, set_max)]
     f = set(hp['hpname'])
@@ -167,7 +167,7 @@ def filtering_data(hp, select_hpname, mdc2d, mdc6d, oped, set_min, set_max):
     return mdc2d, mdc6d, oped, hp
 
 
-@st.experimental_memo()
+@st.experimental_memo(max_entries=10, ttl=3600)
 def draw_chart(select_hpname,  mdc2d, mdc6d, oped, hp):
     ##################################################################
     top_hight = 370
