@@ -57,9 +57,4 @@ with my_expander:
     A2. 厚労省の退院患者調査では、実績が10件未満のデータが公開されていない為、実績値よりも低い数字が表示されます。\n
     　　MDC6を選択している時は、疾患別手術別集計（参考資料２（８））の集計値が表示されます。\n
     　　MDC6を選択していない時は、MDC別医療機関別件数（参考資料２（２））の集計値が表示されます。
-    '''
-                )
-# @@@
-st.markdown('***')
-st.markdown(
-    "Thanks for going through this mini-analysis with me! I'd love feedback on this, so if you want to reach out you can find me on [twitter] (https://twitter.com/inakichii).")
+    ''')
